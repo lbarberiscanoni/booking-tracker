@@ -1,13 +1,14 @@
 doctype html
+html
 head
-    link(rel="stylesheet", href="fullcalendar/fullcalendar.css")
+    link(rel="stylesheet", href="scripts/fullcalendar/fullcalendar.css")
     script(src="//code.jquery.com/jquery-1.11.3.min.js")
     script(src="//code.jquery.com/jquery-migrate-1.2.1.min.js")
-    script(src="fullcalendar/lib/moment.min.js")
-    script(src="fullcalendar/fullcalendar.js")
+    script(src="scripts/fullcalendar/lib/moment.min.js")
+    script(src="scripts/fullcalendar/fullcalendar.js")
     script(src="https://cdn.firebase.com/js/client/2.2.1/firebase.js")
 body
     h1 InnCubator Calendar
+    a(href="guest-info.html") Guest Info
     #calendar
-
-    script(src="fullcalendar/main.js")
+    script(src="scripts/fullcalendar/main.js")

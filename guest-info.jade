@@ -1,0 +1,15 @@
+doctype html
+head
+    script(src='//code.jquery.com/jquery-1.11.3.min.js')
+    script(src='//code.jquery.com/jquery-migrate-1.2.1.min.js')
+    script(src='https://cdn.firebase.com/js/client/2.2.1/firebase.js')
+body
+    h1 Check Guest Info
+    select#property
+        option Select the Property
+        option forest
+        option webster
+        option oasis
+    input(type="text", placeholder="Name of Guest")#guest
+    input(type="button", value="find")#find
+    script(src="scripts/guest-info.js")
