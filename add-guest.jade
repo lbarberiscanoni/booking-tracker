@@ -1,0 +1,23 @@
+doctype html
+head
+    script(src="//code.jquery.com/jquery-1.11.3.min.js")
+    script(src="//code.jquery.com/jquery-migrate-1.2.1.min.js")
+    script(src="https://cdn.firebase.com/js/client/2.2.6/firebase.js")
+body
+    h1 Adding Guests
+    select#property
+        option select a property
+        option forest
+        option webster
+        option oasis
+    input(type="text", placeholder="guest name")#guestName
+    input(type="text", placeholder="guest lastname")#guestLastName
+    input(type="text", placeholder="start date dd-mm-yy")#start
+    input(type="text", placeholder="start date dd-mm-yy")#end
+    select#paymentStatus
+        option payment status 
+        option paid
+        option owes $1000
+        option owes $500
+    input(type="button", value="add guest")#add
+    script(src="scripts/add-guest.js")
