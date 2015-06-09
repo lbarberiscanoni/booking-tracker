@@ -1,6 +1,7 @@
 doctype html
 html
 head
+    link(rel="stylesheet", href="scripts/fullcalendar/main.css")
     link(rel="stylesheet", href="scripts/fullcalendar/fullcalendar.css")
     script(src="//code.jquery.com/jquery-1.11.3.min.js")
     script(src="//code.jquery.com/jquery-migrate-1.2.1.min.js")
@@ -12,5 +13,9 @@ body
     a(href="guest-info.html") Guest Info
     a(href="add-guest.html") Add Guests
     a(href="change-guest.html") Alter Reservations
+    select(onChange="goToHouse()")
+        option Select a House
+        option webster
+        option forest
     #calendar
     script(src="scripts/fullcalendar/main.js")

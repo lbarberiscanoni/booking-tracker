@@ -1,18 +1,94 @@
 //This is for Firebase
 var myDataRef = new Firebase("https://blazing-torch-8586.firebaseio.com");
+var myDataRef2 = new Firebase("https://booking-example.firebaseio.com");
 //myDataRef.set("Let the hacking begin");
 
 //This is where the script starts
-var HARDCODED_MAX_EVENT_LIMIT = 2;
+var HARDCODED_MAX_EVENT_LIMIT = 0;
 var ONE_DAY = 1000 * 3600 * 24;
 
 var updateCalendarOnFirebase = function(newCalEvents) {
     myDataRef.set({events: newCalEvents});
 };
 
-myDataRef.once("value", function(nameSnapshot) {
+var goToHouse = function() {
+    houseName = $("select").val();
+    location.replace(location.origin + "?house=" + houseName);
+}
+
+var isDayFull = function(allCalEvents, todaysDate) {
+    var limitForDay = HARDCODED_MAX_EVENT_LIMIT;
+
+    var todaysEOD = new Date(todaysDate.getTime() + ONE_DAY);
+
+    var todaysEvents = allCalEvents.filter(function(calEvent) {
+       var start = new Date(calEvent.start); 
+       var end = new Date(calEvent.end);
+       return todaysDate >= start && todaysEOD <= end;
+    });
+
+    return todaysEvents.length > limitForDay;
+}
+
+//myDataRef.once("value", function(nameSnapshot) {
+//    var val = nameSnapshot.val();
+//    initCalendar(val.events);
+//});
+
+myDataRef2.once("value", function(nameSnapshot) {
     var val = nameSnapshot.val();
-    initCalendar(val.events);
+
+    // TODO this is hacky as fuck
+    if (location.search) {
+        var HOUSE = location.search.substr(7);
+    }
+
+    var events = Object.keys(val[HOUSE]).map(function (guestName) {
+        var event = val[HOUSE][guestName];
+        return [
+       // {
+       //     start: event.start,
+       //     end: event.end,
+       //     title: guestName + ': ' + event.status,
+       //     rendering: 'background'
+       // }, 
+        {
+            start: event.start,
+            end: event.end,
+            title: guestName + ': ' + event.status,
+            //rendering: 'background'
+        }];
+    }).reduce(function(a,b) { return a.concat(b); });
+
+
+    var startOfMonth = new Date('2015-06-01');
+    var daysOfMonth = 31;
+
+    for (var i = 0; i < daysOfMonth; i++) {
+        var curDay = new Date(startOfMonth.getTime() + i * 3600 * 1000 * 24);
+        var isFull = isDayFull(events, curDay);
+        if (isFull) {
+            if (i < 9) {
+                var start = '2015-06-0' + (1 + i);
+            } else {
+                var start = '2015-06-' + (1 + i);
+            }
+            if (i < 8) {
+                var end = '2015-06-0' + (2 + i);
+            } else {
+                var end = '2015-06-' + (2 + i);
+            }
+            var bgEvent = {
+                start: start,
+                end: end,
+                rendering: 'background'
+            };
+            events.unshift(bgEvent);
+        }
+    }
+
+    console.log(events);
+    initCalendar(events);
 });
 
 var initCalendar = function(calendarEvents) {
@@ -42,25 +118,15 @@ var initCalendar = function(calendarEvents) {
             updateCalendarOnFirebase(calendarEvents);
         },
         dayClick: function(date, jsEvent, view) {
-            var allCalEvents = calendarEvents;
-            var limitForDay = HARDCODED_MAX_EVENT_LIMIT;
-
-            var todaysDate = date._d;
-            var todaysEOD = new Date(todaysDate.getTime() + ONE_DAY);
-
-            var todaysEvents = allCalEvents.filter(function(calEvent) {
-               var start = new Date(calEvent.start); 
-               var end = new Date(calEvent.end);
-               return todaysDate >= start && todaysEOD <= end;
-            });
+            var isFull = isDayFull(calendarEvents, date._d);
             
-            console.log("counted " + todaysEvents.length + " events today");
-            todaysEvents.map(function(e) { console.log(e.title + " is today"); });
-            console.log("================================");
+            //console.log("counted " + todaysEvents.length + " events today");
+            //todaysEvents.map(function(e) { console.log(e.title + " is today"); });
+            //console.log("================================");
 
-            alert("There are " + todaysEvents.length + " guests on this day")
+            //alert("There are " + todaysEvents.length + " guests on this day")
             
-            if (todaysEvents.length > limitForDay) {
+            if (isFull) {
                 $(this).css("background-color", "red");
             } else {
                 $(this).css("background-color", "green");
