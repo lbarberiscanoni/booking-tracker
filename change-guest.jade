@@ -1,14 +1,18 @@
 doctype html
+html
 head
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
     script(src="//code.jquery.com/jquery-1.11.3.min.js")
     script(src="//code.jquery.com/jquery-migrate-1.2.1.min.js")
     script(src="https://cdn.firebase.com/js/client/2.2.6/firebase.js")
 body
-    h1 Changing Guests
-    select#property
-        option select a property
-        option forest
-        option webster
-        option oasis
-    a(href="index.html") HOME
+    h1.text-center Changing Guests
+        a(href="index.html").btn.btn-default HOME
+    .container
+        .row
+            select#property
+                option select a property
+                option forest
+                option webster
+                option oasis
     script(src="scripts/change-guest.js")

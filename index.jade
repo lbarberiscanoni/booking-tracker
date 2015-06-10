@@ -1,6 +1,7 @@
 doctype html
 html
 head
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
     link(rel="stylesheet", href="scripts/fullcalendar/main.css")
     link(rel="stylesheet", href="scripts/fullcalendar/fullcalendar.css")
     script(src="//code.jquery.com/jquery-1.11.3.min.js")
@@ -10,9 +11,9 @@ head
     script(src="https://cdn.firebase.com/js/client/2.2.1/firebase.js")
 body
     h1 InnCubator Calendar
-    a(href="guest-info.html") Guest Info
-    a(href="add-guest.html") Add Guests
-    a(href="change-guest.html") Alter Reservations
+    a(href="guest-info.html").btn.btn-default Guest Info
+    a(href="add-guest.html").btn.btn-default Add Guests
+    a(href="change-guest.html").btn.btn-default Alter Reservations
     select(onChange="goToHouse()")
         option Select a House
         option webster
