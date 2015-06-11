@@ -13,7 +13,7 @@ var updateCalendarOnFirebase = function(newCalEvents) {
 
 var goToHouse = function() {
     houseName = $("select").val();
-    location.replace(location.origin + "?house=" + houseName);
+    location.replace(location.origin + location.pathname + "?house=" + houseName);
 }
 
 var isDayFull = function(allCalEvents, todaysDate) {
