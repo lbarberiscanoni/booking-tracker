@@ -9,13 +9,16 @@ body
     h1.text-center Check Availability
         a(href="index.html").btn.btn-default HOME
     .container
-        select.form-control
-            option Select a Property
-            option forest
-            option webster
-            option oasis
-        input(type="date", placeholder="Start Date")#startDate
-        input(type="date", placeholder="End Date")#endDate
-        button(onclick="onThingyClick()").btn.btn-primary Check Date Range
+        .form-inline
+            select.form-control
+                option Select a Property
+                option forest
+                option webster
+                option oasis
+                option aviato
+                option brannon
+            input(type="date", placeholder="Start Date").form-control#startDate
+            input(type="date", placeholder="End Date").form-control#endDate
+            button(onclick="onThingyClick()").btn.btn-primary Check Date Range
     script(src="scripts/range-check.js")
 

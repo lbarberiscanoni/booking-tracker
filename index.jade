@@ -10,14 +10,18 @@ head
     script(src="scripts/fullcalendar/fullcalendar.js")
     script(src="https://cdn.firebase.com/js/client/2.2.1/firebase.js")
 body
-    h1 InnCubator Calendar
+    h1.text-center InnCubator Calendar
     a(href="guest-info.html").btn.btn-default Guest Info
     a(href="add-guest.html").btn.btn-default Add Guests
     a(href="change-guest.html").btn.btn-default Alter Reservations
     a(href="range-check.html").btn.btn-default Check Availability
-    select(onChange="goToHouse()")
-        option Select a House
-        option webster
-        option forest
+    .btn
+        select(onChange="goToHouse()").form-control
+            option Select a House
+            option webster
+            option forest
+            option oasis
+            option aviato
+            option brannan
     #calendar
     script(src="scripts/fullcalendar/main.js")

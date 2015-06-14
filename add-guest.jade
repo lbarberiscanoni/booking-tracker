@@ -10,16 +10,18 @@ body
         a(href="index.html").btn.btn-default HOME
     .container
         .row.form-inline
-            select.selectpicker#property
+            select.form-control#property
                 option select a property
                 option forest
                 option webster
                 option oasis
+                option aviato
+                option brannon
             input(type="text", placeholder="guest name").form-control#guestName
             input(type="text", placeholder="guest lastname").form-control#guestLastName
-            input(type="text", placeholder="start date dd-mm-yy").form-control#start
-            input(type="text", placeholder="start date dd-mm-yy").form-control#end
-            select#paymentStatus
+            input(type="date", placeholder="start date dd-mm-yy").form-control#start
+            input(type="date", placeholder="start date dd-mm-yy").form-control#end
+            select.form-control#paymentStatus
                 option payment status 
                 option paid
                 option owes $1000
