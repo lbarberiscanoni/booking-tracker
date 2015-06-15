@@ -4,7 +4,22 @@ var myDataRef2 = new Firebase("https://booking-example.firebaseio.com");
 //myDataRef.set("Let the hacking begin");
 
 //This is where the script starts
-var HARDCODED_MAX_EVENT_LIMIT = 0;
+var houseName = $("select").val();
+
+if (houseName == "webster") {
+    var HARDCODED_MAX_EVENT_LIMIT = 18;
+} else if (houseName == "forest") {
+    var HARDCODED_MAX_EVENT_LIMIT = 12;
+} else if (houseName == "oasis") {
+    var HARDCODED_MAX_EVENT_LIMIT = 10;
+} else if (houseName == "aviato") {
+    var HARDCODED_MAX_EVENT_LIMIT = 12;
+} else if (houseName == "brannan") {
+    var HARDCODED_MAX_EVENT_LIMIT = 10;
+} else {
+    var HARDCODED_MAX_EVENT_LIMIT = 0;
+};
+
 var ONE_DAY = 1000 * 3600 * 24;
 
 var updateCalendarOnFirebase = function(newCalEvents) {
