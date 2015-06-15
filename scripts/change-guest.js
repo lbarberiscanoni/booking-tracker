@@ -6,8 +6,9 @@ $(document).ready(function() {
         var property = $("#property").val();
         var guestList = new Firebase(fireData + "/" + property);
 
-        $("body").append("<select>" + "</select>");
+        $("div.row.form-inline").append("<select>" + "</select>");
         $("select:last-of-type").attr("id", "guestName");
+        $("select:last-of-type").addClass("form-control");
 
         guestList.orderByValue().on("value", function(snapshot) {
 
@@ -23,8 +24,9 @@ $(document).ready(function() {
             var guestName = $("#guestName").val();
             var guestReservation = new Firebase(fireData + "/" + property + "/" + guestName);
 
-            $("body").append("<select>" + "</select>");
+            $("div.row.form-inline").append("<select>" + "</select>");
             $("select:last-of-type").attr("id", "guestInfo");
+            $("select:last-of-type").addClass("form-control");
 
             guestReservation.orderByValue().on("value", function(snapshot) {
 
@@ -40,15 +42,20 @@ $(document).ready(function() {
 
                var guestInfo = $("#guestInfo").val();
 
-               $("body").append("<input>" + "</input>");
-               $("input").attr("type", "text");
-               $("input").attr("placeholder", "enter new " + guestInfo);
+               $("div.row.form-inline").append("<input>" + "</input>");
+               
+               if (guestInfo == "start" || guestInfo == "end") {
+                   $("input").attr("type", "date");
+               } else {
+                   $("input").attr("placeholder", "enter new " + guestInfo);
+               };
+
                $("input").attr("id", "dataChange");
+               $("input:last").addClass("form-control");
                 
-               $("body").append("<input>" + "</input>");
-               $("input:last-of-type").attr("type", "button");
-               $("input:last-of-type").attr("value", "submit change");
-               $("input:last-of-type").attr("id", "submitChange");
+               $("div.row.form-inline").append("<button>" + "Submit Change" + "</button>");
+               $("button").attr("id", "submitChange");
+               $("button").addClass("btn btn-primary");
 
                $("#submitChange").click(function() {
 
