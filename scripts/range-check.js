@@ -14,7 +14,13 @@ var isDayFull = function(allCalEvents, todaysDate) {
        return todaysDate >= start && todaysEOD <= end;
     });
 
-    return todaysEvents.length > limitForDay;
+    if (todaysEvents.length > limitForDay) {
+        return "AVAILABLE with [ " + (todaysEvents.length - limitForDay) + " ] spots open";
+    } else if (todaysEvents.length == limitForDay) {
+        return "FULLY BOOKED";
+    } else {
+        return "OVERBOOKED: [ " + (limitForDay = todaysEvents.length) + " ] extra people";
+    };
 }
 
 //myDataRef.once("value", function(nameSnapshot) {
@@ -54,7 +60,6 @@ function isRangeAvailable(calEvents, startDate, endDate) {
     return ret;
 }
 
-// fuck my life
 var onThingyClick = function() {
     var startDate = new Date($("#startDate").val());
     var endDate = new Date($("#endDate").val());
@@ -62,9 +67,15 @@ var onThingyClick = function() {
     var events = getEventsForHouse(property);
 
     if (startDate && endDate){
-        alert(isRangeAvailable(events, startDate, endDate));
         var rangeOfDays = isRangeAvailable(events, startDate, endDate);
-        $(".container").append("<p>" + rangeOfDays + "</p>");
+        for (var i = 0; i < rangeOfDays.length; i++) {
+            var oneDay = 1000 * 3600 * 24;
+            var loopDate = new Date(startDate.getTime() - (i - 1) * oneDay);
+            var dateAtThisTime = loopDate.toString().split("2015")[0];
+            var dayAtThisTime = dateAtThisTime.split()[1];
+            console.log(dateAtThisTime);
+            $(".container").append("<p>" + dateAtThisTime + " is " + rangeOfDays[i] + "</p>");
+        }
     } else {
         alert('bad input is the only thing that i like');
     }
