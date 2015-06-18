@@ -4,6 +4,8 @@ var myDataRef2 = new Firebase("https://booking-example.firebaseio.com");
 //myDataRef.set("Let the hacking begin");
 
 //This is where the script starts
+HARDCODED_MAX_EVENT_LIMIT = 0;
+
 $("#houseName").change(function() {
     var houseName = $("#houseName").val();
 
