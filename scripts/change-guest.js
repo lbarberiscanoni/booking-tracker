@@ -2,8 +2,8 @@ var fireData = new Firebase("https://booking-example.firebaseio.com");
 
 $(document).ready(function() {
 
-    $("#property").change(function() {
-        var property = $("#property").val();
+    $("#houseName").change(function() {
+        var property = $("#houseName").val();
         var guestList = new Firebase(fireData + "/" + property);
 
         $("div.row.form-inline").append("<select>" + "</select>");
@@ -59,7 +59,7 @@ $(document).ready(function() {
 
                $("#submitChange").click(function() {
 
-                   var property = $("#property").val();
+                   var property = $("#houseName").val();
                    var guestName = $("#guestName").val();
                    var firstPath = fireData.child(property)
                    var guestInfo = $("#guestInfo").val();

@@ -2,7 +2,7 @@ var fireData = new Firebase("https://booking-example.firebaseio.com");
 
 $(document).ready(function() {
     $("#add").click(function() {
-        var property = $("#property").val();
+        var property = $("#houseName").val();
         var guestName = $("#guestName").val();
         var guestLastName = $("#guestLastName").val();
         var guestID = guestName + "-" + guestLastName;

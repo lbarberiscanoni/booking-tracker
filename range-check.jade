@@ -10,13 +10,14 @@ body
         a(href="index.html").btn.btn-default HOME
     .container
         .form-inline
-            select.form-control
+            select.form-control#houseName
                 option Select a Property
                 option forest
                 option webster
                 option oasis
                 option aviato
                 option brannon
+                option berry
             input(type="date", placeholder="Start Date").form-control#startDate
             input(type="date", placeholder="End Date").form-control#endDate
             button(onclick="onThingyClick()").btn.btn-primary Check Date Range

@@ -16,12 +16,13 @@ body
     a(href="change-guest.html").btn.btn-default Alter Reservations
     a(href="range-check.html").btn.btn-default Check Availability
     .btn
-        select(onChange="goToHouse()").form-control
+        select(onChange="goToHouse()").form-control#houseName
             option Select a House
-            option webster
             option forest
+            option webster
             option oasis
             option aviato
             option brannan
+            option berry
     #calendar
     script(src="scripts/fullcalendar/main.js")

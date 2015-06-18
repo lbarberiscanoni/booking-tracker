@@ -1,5 +1,25 @@
-// holy jesus  what the fuck
-var HARDCODED_MAX_EVENT_LIMIT = 0;
+// holy jesus  what the fuck (gosh abdul is so dumb)
+$("#houseName").change(function() {
+    var houseName = $("#houseName").val();
+
+    if (houseName == "webster") {
+        var HARDCODED_MAX_EVENT_LIMIT = 18;
+    } else if (houseName == "forest") {
+        var HARDCODED_MAX_EVENT_LIMIT = 12;
+    } else if (houseName == "oasis") {
+        var HARDCODED_MAX_EVENT_LIMIT = 10;
+    } else if (houseName == "aviato") {
+        var HARDCODED_MAX_EVENT_LIMIT = 10;
+    } else if (houseName == "brannan") {
+        var HARDCODED_MAX_EVENT_LIMIT = 14;
+    } else if (houseName == "berry") {
+        var HARDCODED_MAX_EVENT_LIMIT = 10;
+    } else {
+        var HARDCODED_MAX_EVENT_LIMIT = 0;
+    };
+});
+
+
 var ONE_DAY = 1000 * 3600 * 24;
 var myDataRef2 = new Firebase("https://booking-example.firebaseio.com");
 
