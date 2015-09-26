@@ -1,0 +1,21 @@
+doctype html
+html
+head
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+    script(src="//code.jquery.com/jquery-1.11.3.min.js")
+    script(src="//code.jquery.com/jquery-migrate-1.2.1.min.js")
+    script(src="https://cdn.firebase.com/js/client/2.2.6/firebase.js")
+body
+    h1.text-center Changing Guests
+        a(href="../index.html").btn.btn-default HOME
+    .container
+        .row.form-inline
+            select.form-control#houseName
+                option Select a House
+                option aviato
+                option berry
+                option forest
+                option roselane
+                option santa-monica
+                option webster
+    script(src="../scripts/change-guest.js")

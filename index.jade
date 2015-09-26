@@ -1,28 +1,25 @@
-doctype html
-html
+octype html
 head
-    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
-    link(rel="stylesheet", href="scripts/fullcalendar/main.css")
-    link(rel="stylesheet", href="scripts/fullcalendar/fullcalendar.css")
-    script(src="//code.jquery.com/jquery-1.11.3.min.js")
-    script(src="//code.jquery.com/jquery-migrate-1.2.1.min.js")
-    script(src="scripts/fullcalendar/lib/moment.min.js")
-    script(src="scripts/fullcalendar/fullcalendar.js")
-    script(src="https://cdn.firebase.com/js/client/2.2.1/firebase.js")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+    link(rel="stylesheet" href="fullcalendar/fullcalendar.min.css")
+    script(src="lib/jquery.min.js")
+    script(src="lib/jquery-ui.custom.min.js")
+    script(src="lib/moment.min.js")
+    script(src="fullcalendar/fullcalendar.min.js")
+    script(src="https://cdn.firebase.com/js/client/2.3.0/firebase.js")
 body
-    h1.text-center InnCubator Calendar
-    a(href="guest-info.html").btn.btn-default Guest Info
-    a(href="add-guest.html").btn.btn-default Add Guests
-    a(href="change-guest.html").btn.btn-default Alter Reservations
-    a(href="range-check.html").btn.btn-default Check Availability
+    a(href="views/add-guest.html").btn.btn-default Add Guest
+    a(href="views/change-guest.html").btn.btn-default Change Guest
+    a(href="views/guest-info.html").btn.btn-default Check Guest Info
+    a(href="views/range-check.html").btn.btn-default Check Range
     .btn
-        select(onChange="goToHouse()").form-control#houseName
+        select.form-control#houseName
             option Select a House
-            option forest
-            option webster
-            option oasis
             option aviato
-            option brannan
             option berry
+            option forest
+            option roselane
+            option santa-monica
+            option webster
     #calendar
-    script(src="scripts/fullcalendar/main.js")
+    script(src="scripts/main.js")

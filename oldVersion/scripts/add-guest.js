@@ -11,13 +11,10 @@ $(document).ready(function() {
         var paymentStatus = $("#paymentStatus").val();
 
         alert("You are about to add " + guestID + " " + "to " + property + " starting on: " + startDate + " and ending on: " + endDate)
-
-        fireData.child(property).push({
+        fireData.child(property).child(guestID).set({
            start: startDate,
            end: endDate,
-           title: guestID,
+           status: paymentStatus,
         });
-
-        window.location.reload();
     });
 });

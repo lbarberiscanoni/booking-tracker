@@ -1,0 +1,28 @@
+doctype html
+html
+head
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+    link(rel="stylesheet", href="scripts/fullcalendar/main.css")
+    link(rel="stylesheet", href="scripts/fullcalendar/fullcalendar.css")
+    script(src="//code.jquery.com/jquery-1.11.3.min.js")
+    script(src="//code.jquery.com/jquery-migrate-1.2.1.min.js")
+    script(src="scripts/fullcalendar/lib/moment.min.js")
+    script(src="scripts/fullcalendar/fullcalendar.js")
+    script(src="https://cdn.firebase.com/js/client/2.2.1/firebase.js")
+body
+    h1.text-center InnCubator Calendar
+    a(href="guest-info.html").btn.btn-default Guest Info
+    a(href="add-guest.html").btn.btn-default Add Guests
+    a(href="change-guest.html").btn.btn-default Alter Reservations
+    a(href="range-check.html").btn.btn-default Check Availability
+    .btn
+        select.form-control#houseName
+            option Select a House
+            option forest
+            option webster
+            option oasis
+            option aviato
+            option brannan
+            option berry
+    #calendar
+    script(src="scripts/fullcalendar/main2.js")
