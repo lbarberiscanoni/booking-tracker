@@ -93,6 +93,9 @@ $("#rangeCheck").click(function() {
             var loopDate = new Date(startDate.getTime() - (i - 1) * oneDay);
             var dateAtThisTime = loopDate.toString().split("2015")[0];
             var dayAtThisTime = dateAtThisTime.split()[1];
+            console.log(startDate);
+            console.log(endDate);
+            console.log(events);
             console.log(dateAtThisTime);
             $(".container").append("<p>" + dateAtThisTime + " is " + rangeOfDays[i] + "</p>");
         }

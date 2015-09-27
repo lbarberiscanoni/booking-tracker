@@ -46,7 +46,11 @@ $(document).ready(function() {
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
                             case "berry":
-                                var HARDCODED_MAX_EVENT_LIMIT = 12;
+                                var HARDCODED_MAX_EVENT_LIMIT = 10;
+                                window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
+                                break;
+                            case "kings":
+                                var HARDCODED_MAX_EVENT_LIMIT = 10;
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
                             case "forest":
