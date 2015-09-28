@@ -20,6 +20,7 @@ $(document).ready(function() {
             $("#guestInfo").append("<option>start</option>");
             $("#guestInfo").append("<option>end</option>");
             $("#guestInfo").append("<option>status</option>");
+            $("#guestInfo").append("<option>email</option>");
 
             $("#guestInfo").change(function() {
                 var guestInfo = $("#guestInfo").val();
@@ -60,6 +61,16 @@ $(document).ready(function() {
                         $("#submit").click(function() {
                             houseData.child(thisGuestID).update({
                                 "status": newData,
+                            });
+                            alert("success");
+                            window.location.reload();
+                        });
+                        break;
+                    case "email":
+                        updateGuestInfo();
+                        $("#submit").click(function() {
+                            houseData.child(thisGuestID).update({
+                                "email": newData,
                             });
                             alert("success");
                             window.location.reload();
