@@ -9,13 +9,16 @@ $(document).ready(function() {
         var startDate = $("#start").val();
         var endDate = $("#end").val();
         var paymentStatus = $("#paymentStatus").val();
+        var email = $("#email").val();
 
         alert("You are about to add " + guestID + " " + "to " + property + " starting on: " + startDate + " and ending on: " + endDate)
 
         fireData.child(property).push({
-           start: startDate,
-           end: endDate,
-           title: guestID,
+            start: startDate,
+            end: endDate,
+            title: guestID,
+            status: paymentStatus,
+            email: email,
         });
 
         window.location.reload();
