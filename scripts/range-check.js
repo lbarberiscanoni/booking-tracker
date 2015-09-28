@@ -90,7 +90,7 @@ $("#rangeCheck").click(function() {
         var rangeOfDays = isRangeAvailable(events, startDate, endDate);
         for (var i = 0; i < rangeOfDays.length; i++) {
             var oneDay = 1000 * 3600 * 24;
-            var loopDate = new Date(startDate.getTime() - (i - 1) * oneDay);
+            var loopDate = new Date(endDate.getTime() - (i - 1) * oneDay);
             var dateAtThisTime = loopDate.toString().split("2015")[0];
             var dayAtThisTime = dateAtThisTime.split()[1];
             console.log(startDate);
