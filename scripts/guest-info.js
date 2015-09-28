@@ -23,6 +23,9 @@ $(document).ready(function() {
             });
 
             $("#find").click(function() {
+                //remove duplicates
+                $(".container h3").remove();
+
                 var guestNameAndInfo = $("#guest").val();
                 var justGuestID = guestNameAndInfo.split(" ")[1];
                 var justGuestID_1 = justGuestID.replace("[", "");
