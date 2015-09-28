@@ -16,19 +16,22 @@ $(document).ready(function() {
         guestList.orderByValue().on("value", function(snapshot) {
             $("select:last-of-type").append("<option>" + "select a guest" + "</option>");
             snapshot.forEach(function(data) {
-                guestName = data.key();
-                $("select:last-of-type").append("<option>" + guestName + "</option>");
+                guestID = data.key();
+                guest = data.val();
+                $("select:last-of-type").append("<option>" + guest.title + " [" + guestID + "]" + "</option>");
+
             });
-        });
 
-        $("#find").click(function() {
-            var guest = $("#guest").val();
-            var guestData = new Firebase(guestList + "/" + guest);
+            $("#find").click(function() {
+                var guestNameAndInfo = $("#guest").val();
+                var justGuestID = guestNameAndInfo.split(" ")[1];
+                var justGuestID_1 = justGuestID.replace("[", "");
+                var justGuestID_2 = justGuestID_1.replace("]", "");
 
-            guestData.orderByValue().on("value", function(snapshot) {
-                snapshot.forEach(function(data) {
-                    guestInfo = data.key() + " : " + data.val();
-                    $("div.container").append("<h3>" + guestInfo + "</h3>");
+                guestList.child(justGuestID_2).on("child_added", function(snapshot) {
+                    var parameter = snapshot.key();
+                    var guestInfo = snapshot.val();
+                    $(".container").append("<h3>" + parameter + ": " + guestInfo + "</h3>");
                 });
             });
         });
