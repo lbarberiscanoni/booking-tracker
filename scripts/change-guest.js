@@ -3,14 +3,15 @@ var fireData = new Firebase("https://booking-tracker.firebaseio.com");
 $(document).ready(function() {
     $("#houseName").change(function() {
         var property = $("#houseName").val();
+        var houseData = new Firebase(fireData + "/" + property);
 
         $("div.row.form-inline").append("<select id='guestName' class='form-control'>" + "</select>");
         $("select").append("<option>" + "select a guest" + "</option>");
 
-        fireData.child(property).on("child_added", function(snapshot) {
+        houseData.on("child_added", function(snapshot) {
+            guestID = snapshot.key();
             guest = snapshot.val(); 
-            guestName = guest.title;
-            $("select").append("<option>" + guestName + "</option>");
+            $("select").append("<option>" + guest.title + " [" + guestID + "]" + "</option>");
         });
 
         $("#guestName").change(function() {
@@ -22,18 +23,47 @@ $(document).ready(function() {
 
             $("#guestInfo").change(function() {
                 var guestInfo = $("#guestInfo").val();
+                var thisGuestID = $("#guestName").val().split(" ")[1].replace("[", "").replace("]", "");
+
+                var updateGuestInfo = function() {
+                    $("div.row.form-inline").append("<input type='date' class='form-control' id='change'>");
+                    $("div.row.form-inline").append("<button class='btn btn-primary' id='submit'>Submit</button>");
+                    $("#change").change(function() {
+                        var newData = $("#change").val();
+                        window.newData = newData;
+                    });
+                };
+
                 switch (guestInfo) {
                     case "start":
-                        $("div.row.form-inline").append("<input type='date' class='form-control'>");
-                        $("div.row.form-inline").append("<button class='btn btn-primary' id='submit'> Submit");
+                        updateGuestInfo();
+                        $("#submit").click(function() {
+                            houseData.child(thisGuestID).update({
+                                "start": newData,
+                            });
+                            alert("success");
+                            window.location.reload();
+                        });
                         break;
                     case "end":
-                        $("div.row.form-inline").append("<input type='date' class='form-control'>");
-                        $("div.row.form-inline").append("<button class='btn btn-primary' id='submit'> Submit");
+                        updateGuestInfo();
+                        $("#submit").click(function() {
+                            houseData.child(thisGuestID).update({
+                                "end": newData,
+                            });
+                            alert("success");
+                            window.location.reload();
+                        });
                         break;
                     case "status":
-                        $("div.row.form-inline").append("<input type='text' placeholder='enter owed amount' class='form-control'>");
-                        $("div.row.form-inline").append("<button class='btn btn-primary' id='submit'> Submit");
+                        updateGuestInfo();
+                        $("#submit").click(function() {
+                            houseData.child(thisGuestID).update({
+                                "status": newData,
+                            });
+                            alert("success");
+                            window.location.reload();
+                        });
                         break;
                 };
             });
