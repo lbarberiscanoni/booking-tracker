@@ -2,6 +2,7 @@ var allData = new Firebase("https://inncubator-booking.firebaseio.com");
 
 $(document).ready(function() {
 
+
     //let's get today's date in order to make it the default
     var today = new Date();
     var year = today.getFullYear();
@@ -90,6 +91,7 @@ $(document).ready(function() {
         var guestList = [];
         allData.once("value", function(snapshot) {
             var numOfGuests = snapshot.numChildren();
+            console.log(numOfGuests);
 
             var loop = 0;
             allData.on("child_added", function(snapshot) {

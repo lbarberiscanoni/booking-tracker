@@ -1,6 +1,9 @@
-var fireData = new Firebase("https://booking-tracker.firebaseio.com");
+var fireData = new Firebase("https://inncubator-booking.firebaseio.com")
 
 $(document).ready(function() {
+    $("#edit").click(function() {
+        alert("yo");
+    });
     $("#houseName").change(function() {
         var property = $("#houseName").val();
         var houseData = new Firebase(fireData + "/" + property);
