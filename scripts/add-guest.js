@@ -1,4 +1,4 @@
-var fireData = new Firebase("https://booking-tracker.firebaseio.com");
+var fireData = new Firebase("https://inncubator-booking.firebaseio.com");
 
 $(document).ready(function() {
     $("#add").click(function() {
@@ -13,12 +13,13 @@ $(document).ready(function() {
 
         alert("You are about to add " + guestID + " " + "to " + property + " starting on: " + startDate + " and ending on: " + endDate)
 
-        fireData.child(property).push({
+        fireData.push({
             start: startDate,
             end: endDate,
             title: guestID,
             status: paymentStatus,
             email: email,
+            location: property,
         });
 
         window.location.reload();

@@ -1,4 +1,4 @@
-var generalURL = new Firebase("https://booking-tracker.firebaseio.com/");
+var allData = new Firebase("https://inncubator-booking.firebaseio.com");
 
 $(document).ready(function() {
 
@@ -86,19 +86,23 @@ $(document).ready(function() {
 
     $("#houseName").change(function() {
         var houseSelected = $("#houseName").val();
-        var houseData = new Firebase(generalURL + houseSelected);
 
         var guestList = [];
-        houseData.once("value", function(snapshot) {
+        allData.once("value", function(snapshot) {
             var numOfGuests = snapshot.numChildren();
 
-            houseData.on("child_added", function(snapshot) {
-                guestInfo = snapshot.val();
-                guestList.push(guestInfo);
+            var loop = 0;
+            allData.on("child_added", function(snapshot) {
+                loop += 1;
+                var guestInfo = snapshot.val();
+                if (guestInfo.location == houseSelected) {
+                    guestList.push(guestInfo);
+                };
 
-                if (guestList.length == numOfGuests) {
+                if (loop == numOfGuests) {
                     initCalendar(guestList);
                 };
+
             });
         });
     });

@@ -1,4 +1,4 @@
-var allData = new Firebase("https://booking-tracker.firebaseio.com");
+var allData = new Firebase("https://inncubator-booking.firebaseio.com");
 
 $(document).ready(function() {
     //let's get todays date
@@ -19,18 +19,14 @@ $(document).ready(function() {
     
     //let's add guest
     allData.on("child_added", function(snapshot) {
-        var houseName = snapshot.key();
-        var lol = $(".container").append("<div class='row col-md-6' id='" + houseName + "'><h2>" + houseName + "</h2></div>");
-        i = 0;
-        allData.child(houseName).on("child_added", function(snapshot) {
-            var guest = snapshot.val();
-            if (guest.end > todaysDate && guest.start <= todaysDate) {
-                i = i + 1
-                $("#" + houseName).append("<h3 class='btn btn-default'>Name: " + guest.title + "<br>Start: " + guest.start + "<br>End: " + guest.end + "<br>Status: " + guest.status + "<br>Email: " + guest.email + "</h3>");
-                $("#" + houseName + " h2").html(houseName + " [" + i.toString() + "]");
-            } else {
-                return false;
-            };
-        });
+        var guestInfo = snapshot.val();
+        var houseName = guestInfo.location;
+        if (guestInfo.end > todaysDate && guestInfo.start <= todaysDate) {
+            $("#" + houseName).append("<h3 class='btn btn-default'>Name: " + guestInfo.title + "<br>Start: " + guestInfo.start + "<br>End: " + guestInfo.end + "<br>Status: " + guestInfo.status + "<br>Email: " + guestInfo.email + "</h3>");
+            var numOfGuests = $("#" + houseName).children().length - 1;
+            $("#" + houseName + " h2").html(houseName + " [" + numOfGuests.toString() + "]");
+        } else {
+            return false;
+        };
     });
 });
