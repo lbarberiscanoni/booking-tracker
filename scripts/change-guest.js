@@ -2,85 +2,50 @@ var fireData = new Firebase("https://inncubator-booking.firebaseio.com")
 
 $(document).ready(function() {
     $("#edit").click(function() {
-        alert("yo");
-    });
-    $("#houseName").change(function() {
-        var property = $("#houseName").val();
-        var houseData = new Firebase(fireData + "/" + property);
+        var editView = $(this).text();
+        if (editView == "Edit Guest Info") {
+            $(this).text("Confirm Changes");
+            //firt let's get the current data to mae it the default
+            var currentLocation = $("#location").text();
+            var currentStart = $("#start").text();
+            var currentEnd = $("#end").text();
+            var currentStatus = $("#status").text();
 
-        $("div.row.form-inline").append("<select id='guestName' class='form-control'>" + "</select>");
-        $("select").append("<option>" + "select a guest" + "</option>");
+            //next let's make all the parameters editable
+            //let's start with the property list
+            var listOfProperties = ["aviato", "berry", "casterly-rock", "forest", "kings", "roselane", "santa-monica", "webster", "left-early"];
+            var indexOfDefaultProperty = listOfProperties.indexOf(currentLocation);
+            listOfProperties.splice(indexOfDefaultProperty, 1); 
+            $("#location").html("<select id='location'><option>" + currentLocation + "</option></select>");
+            for (var i = 0; i < listOfProperties.length; i++) {
+                $("select#location").append("<option>" + listOfProperties[i] + "</option>");
+            };
 
-        houseData.on("child_added", function(snapshot) {
-            guestID = snapshot.key();
-            guest = snapshot.val(); 
-            $("select").append("<option>" + guest.title + " [" + guestID + "]" + "</option>");
-        });
+            //next let's do the start and end dates
+            $("#start").html("<input type='date' value='" + currentStart + "' id='start'>");
+            $("#end").html("<input type='date' value='" + currentEnd + "' id='end'>");
 
-        $("#guestName").change(function() {
-            $("div.row.form-inline").append("<select id='guestInfo' class='form-control'></select>");
-            $("#guestInfo").append("<option>select guest info</option>");
-            $("#guestInfo").append("<option>start</option>");
-            $("#guestInfo").append("<option>end</option>");
-            $("#guestInfo").append("<option>status</option>");
-            $("#guestInfo").append("<option>email</option>");
-
-            $("#guestInfo").change(function() {
-                var guestInfo = $("#guestInfo").val();
-                var thisGuestID = $("#guestName").val().split(" ")[1].replace("[", "").replace("]", "");
-
-                var updateGuestInfo = function() {
-                    $("div.row.form-inline").append("<input type='date' class='form-control' id='change'>");
-                    $("div.row.form-inline").append("<button class='btn btn-primary' id='submit'>Submit</button>");
-                    $("#change").change(function() {
-                        var newData = $("#change").val();
-                        window.newData = newData;
-                    });
-                };
-
-                switch (guestInfo) {
-                    case "start":
-                        updateGuestInfo();
-                        $("#submit").click(function() {
-                            houseData.child(thisGuestID).update({
-                                "start": newData,
-                            });
-                            alert("success");
-                            window.location.reload();
-                        });
-                        break;
-                    case "end":
-                        updateGuestInfo();
-                        $("#submit").click(function() {
-                            houseData.child(thisGuestID).update({
-                                "end": newData,
-                            });
-                            alert("success");
-                            window.location.reload();
-                        });
-                        break;
-                    case "status":
-                        updateGuestInfo();
-                        $("#submit").click(function() {
-                            houseData.child(thisGuestID).update({
-                                "status": newData,
-                            });
-                            alert("success");
-                            window.location.reload();
-                        });
-                        break;
-                    case "email":
-                        updateGuestInfo();
-                        $("#submit").click(function() {
-                            houseData.child(thisGuestID).update({
-                                "email": newData,
-                            });
-                            alert("success");
-                            window.location.reload();
-                        });
-                        break;
-                };
+            //last let's do status
+            var statusOptions = ["paid", "owes 1 month"];
+            var indexOfCurrentStatus = statusOptions.indexOf(currentStatus);
+            statusOptions.splice(indexOfCurrentStatus, 1);
+            $("#status").html("<select id='status'><option>" + currentStatus +"</option><option>" + statusOptions[0] + "</option>");
+        } else if (editView == "Confirm Changes") {
+            var guestID = $("#guestID").text();
+            var newLocation = $("select#location").val();
+            var newStart = $("input#start").val();
+            var newEnd = $("input#end").val();
+            var newStatus = $("select#status").val();
+            fireData.child(guestID).update({
+                start: newStart,
+                end: newEnd,
+                status: newStatus,
+                location: newLocation,
             });
-        });
-   });
+            alert("success");
+            window.location.reload();
+        } else {
+            console.log("error during amendment. only 2 views possible");
+        };
+    });
 });
