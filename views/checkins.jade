@@ -1,0 +1,32 @@
+doctype html
+head
+    //responsive stuff
+    meta(name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+    meta(name="HandheldFriendly" content="true")
+    
+    //styling
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+
+    //JS
+    script(src="../lib/jquery.min.js")
+    script(src="../lib/jquery-ui.custom.min.js")
+body
+    h1.text-center Check-ins Coming Up
+    .row
+        .col-md-4
+        .col-md-4
+            select.form-control#houseName
+                option Select a House
+                option aviato
+                option berry
+                option forest
+                option roselane
+                option santa-monica
+                option webster
+                option kings
+                option casterly-rock
+        .col-md-4
+    br
+    .row#guestList 
+    script(src="../scripts/checkins.js")

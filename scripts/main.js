@@ -7,11 +7,15 @@ $(document).ready(function() {
     var today = new Date();
     var year = today.getFullYear();
     var month = today.getMonth() + 1;
-    if (month< 10) {
+    if (month < 10) {
         var month = "0".concat(month.toString());
         window.month = month;
     };
     var day = today.getDate();
+    if (day < 10) {
+        var day = "0".concat(day.toString());
+        window.day = day;
+    };
     var todaysDate = year.toString() + "-" + month.toString() + "-" + day.toString();
 
     //rendering the calendar with the appropriate data
