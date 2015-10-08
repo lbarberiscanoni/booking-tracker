@@ -11,6 +11,7 @@ head
     //JS
     script(src="../lib/jquery.min.js")
     script(src="../lib/jquery-ui.custom.min.js")
+    script(src='https://cdn.firebase.com/js/client/2.2.1/firebase.js')
 body
     h1.text-center Check-ins Coming Up
     .row
@@ -28,5 +29,8 @@ body
                 option casterly-rock
         .col-md-4
     br
-    .row#guestList 
-    script(src="../scripts/checkins.js")
+    .row
+        .col-md-5
+        .col-md-2#guestFlow 
+        .col-md-5
+    script(src="../scripts/guestFlow.js")
