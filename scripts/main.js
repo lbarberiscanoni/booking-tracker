@@ -28,7 +28,8 @@ $(document).ready(function() {
             },
             defaultDate: todaysDate,
             editable: false,
-            eventLimit: true, // allow "more" link when too many events
+            //what this is about to do is ugly af but Dan really wanted to just see the numbers
+            eventLimit: 1, // allow "more" link when too many events
             events: guestList,
             dayClick: function(date) {
                 var thisDate = date.format();
