@@ -9,25 +9,53 @@ body
     h1.text-center Adding Guests
         a(href="../index.html").btn.btn-default HOME
     .container
+        .row
+            .col-md-4
+            .col-md-4
+                select.form-control#houseName
+                    option Select a House
+                    option aviato
+                    option berry
+                    option forest
+                    option roselane
+                    option santa-monica
+                    option webster
+                    option kings
+                    option casterly-rock
+            .col-md-4
+        br
         .row.form-inline
-            select.form-control#houseName
-                option Select a House
-                option aviato
-                option berry
-                option forest
-                option roselane
-                option santa-monica
-                option webster
-                option kings
-                option casterly-rock
-            input(type="text", placeholder="guest name").form-control#guestName
-            input(type="text", placeholder="guest lastname").form-control#guestLastName
-            input(type="text", placeholder="email").form-control#email
-            input(type="date", placeholder="start date dd-mm-yy").form-control#start
-            input(type="date", placeholder="start date dd-mm-yy").form-control#end
-            select.form-control#paymentStatus
-                option payment status 
-                option paid
-                option owes 1 month
-            button.btn.btn-default#add Add Guest
+            .col-md-4
+            .col-md-4
+                input(type="text", placeholder="Name").form-control#guestName
+                input(type="text", placeholder="Last Name").form-control#guestLastName
+            .col-md-4
+        br
+        .row.form-inline
+            .col-md-5
+            .col-md-2
+                .row
+                    label Start Date
+                    input(type="date", placeholder="start date dd-mm-yy").form-control#start
+                br
+                .row
+                    label End Date
+                    input(type="date", placeholder="start date dd-mm-yy").form-control#end
+            .col-md-5
+        br
+        .row.form-inline
+            .col-md-4
+            .col-md-4
+                input(type="text", placeholder="email").form-control#email
+                select.form-control#paymentStatus
+                    option payment status 
+                    option paid
+                    option owes 1 month
+            .col-md-4
+        br
+        .row
+            .col-md-5
+            .col-md-2
+                button.btn.btn-primary#add Add Guest
+            .col-md-5
     script(src="../scripts/add-guest.js")
