@@ -70,7 +70,7 @@ $(document).ready(function() {
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
                             case "santa-monica":
-                                var HARDCODED_MAX_EVENT_LIMIT = 10;
+                                var HARDCODED_MAX_EVENT_LIMIT = 7;
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
                             case "webster":

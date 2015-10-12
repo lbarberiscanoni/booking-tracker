@@ -77,7 +77,7 @@ $("#rangeCheck").click(function() {
             HARDCODED_MAX_EVENT_LIMIT = 10;
             break;
         case "santa-monica":
-            HARDCODED_MAX_EVENT_LIMIT = 10;
+            HARDCODED_MAX_EVENT_LIMIT = 7;
             break;
         case "webster":
             HARDCODED_MAX_EVENT_LIMIT = 20;
