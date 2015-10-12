@@ -1,10 +1,8 @@
-var allData = new Firebase("https://booking-tracker.firebaseio.com/");
+var allData = new Firebase("https://inncubator-booking.firebaseio.com");
 
 var ONE_DAY = 1000 * 3600 * 24;
 
-var isDayFull = function(allCalEvents, todaysDate) {
-    var limitForDay = HARDCODED_MAX_EVENT_LIMIT;
-
+var isDayFull = function(allCalEvents, todaysDate, limitForDay) {
     var todaysEOD = new Date(todaysDate.getTime() + ONE_DAY);
 
     var todaysEvents = allCalEvents.filter(function(calEvent) {
@@ -23,8 +21,8 @@ var isDayFull = function(allCalEvents, todaysDate) {
 }
 
 var getEventsForHouse = function(house) {
-    return Object.keys(window.allHouseData[house]).map(function (guestName) {
-        var event = window.allHouseData[house][guestName];
+    return Object.keys(window.allBookings[house]).map(function (guestName) {
+        var event = window.allBookings[house][guestName];
         return [
           {
             start: event.start,
@@ -36,17 +34,19 @@ var getEventsForHouse = function(house) {
 
 allData.once("value", function(nameSnapshot) {
     var val = nameSnapshot.val();
-    window.allHouseData = val;
+    // transform to a regular array
+    window.allBookings = Object.keys(val).map(function(key) { return val[key] });
 });
 
 
-function isRangeAvailable(calEvents, startDate, endDate) {
+function isRangeAvailable(calEvents, startDate, endDate, maxLimit) {
     var numDays = (endDate - startDate) / ONE_DAY;
+    
     // foreach day
     var ret = [];
     for(var i = 0; i < numDays; i++) {
         var today = new Date(startDate.getTime() + ONE_DAY * i);
-        var dayIsFull = isDayFull(calEvents, today);
+        var dayIsFull = isDayFull(calEvents, today, maxLimit);
         //if (dayIsFull) return false;
         ret.push(dayIsFull);
     }
@@ -58,36 +58,34 @@ $("#rangeCheck").click(function() {
     var startDate = new Date($("#startDate").val());
     var endDate = new Date($("#endDate").val());
     var property = $("#houseName").val();
+    var bookingsForProperty = window.allBookings.filter(function(booking) { 
+        return booking.location === property;
+    });
+
+    var HARDCODED_MAX_EVENT_LIMIT;
     switch (property) {
         case "aviato":
-            var HARDCODED_MAX_EVENT_LIMIT = 10;
-            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
+            HARDCODED_MAX_EVENT_LIMIT = 10;
             break;
         case "berry":
-            var HARDCODED_MAX_EVENT_LIMIT = 12;
-            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
+            HARDCODED_MAX_EVENT_LIMIT = 12;
             break;
         case "forest":
-            var HARDCODED_MAX_EVENT_LIMIT = 12;
-            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
+            HARDCODED_MAX_EVENT_LIMIT = 12;
             break;
         case "roselane":
-            var HARDCODED_MAX_EVENT_LIMIT = 10;
-            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
+            HARDCODED_MAX_EVENT_LIMIT = 10;
             break;
         case "santa-monica":
-            var HARDCODED_MAX_EVENT_LIMIT = 10;
-            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
+            HARDCODED_MAX_EVENT_LIMIT = 10;
             break;
         case "webster":
-            var HARDCODED_MAX_EVENT_LIMIT = 20;
-            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
+            HARDCODED_MAX_EVENT_LIMIT = 20;
             break;
     }
-    var events = getEventsForHouse(property);
 
     if (startDate && endDate){
-        var rangeOfDays = isRangeAvailable(events, startDate, endDate);
+        var rangeOfDays = isRangeAvailable(bookingsForProperty, startDate, endDate, HARDCODED_MAX_EVENT_LIMIT);
         for (var i = 0; i < rangeOfDays.length; i++) {
             var oneDay = 1000 * 3600 * 24;
             var loopDate = new Date(endDate.getTime() - (i - 1) * oneDay);
@@ -95,11 +93,11 @@ $("#rangeCheck").click(function() {
             var dayAtThisTime = dateAtThisTime.split()[1];
             console.log(startDate);
             console.log(endDate);
-            console.log(events);
+            console.log(bookingsForProperty);
             console.log(dateAtThisTime);
             $(".container").append("<p>" + dateAtThisTime + " is " + rangeOfDays[i] + "</p>");
         }
     } else {
-        alert('bad input is the only thing that i like');
+        alert('bad input bro');
     }
 });

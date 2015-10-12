@@ -20,6 +20,8 @@ $(document).ready(function() {
 
     //rendering the calendar with the appropriate data
     var initCalendar = function(guestList) {
+        $("#calendar").remove();
+        $("body").append("<div id='calendar'></div>");
         $("#calendar").fullCalendar({
             header: {
                 left: 'prev,next today',
@@ -90,27 +92,15 @@ $(document).ready(function() {
         });
     };
 
+    allData.once("value", function(nameSnapshot) {
+        var val = nameSnapshot.val();
+        // transform to a regular array
+        window.allBookings = Object.keys(val).map(function(key) { return val[key] });
+    });
+
     $("#houseName").change(function() {
         var houseSelected = $("#houseName").val();
-
-        var guestList = [];
-        allData.once("value", function(snapshot) {
-            var numOfGuests = snapshot.numChildren();
-            console.log(numOfGuests);
-
-            var loop = 0;
-            allData.on("child_added", function(snapshot) {
-                loop += 1;
-                var guestInfo = snapshot.val();
-                if (guestInfo.location == houseSelected) {
-                    guestList.push(guestInfo);
-                };
-
-                if (loop == numOfGuests) {
-                    initCalendar(guestList);
-                };
-
-            });
-        });
+        var guestList = window.allBookings.filter(function(a) { return a.location === houseSelected; });
+        initCalendar(guestList);
     });
 });
