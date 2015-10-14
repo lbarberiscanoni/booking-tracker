@@ -9,18 +9,31 @@ body
     h1.text-center Check Availability
         a(href="../index.html").btn.btn-default HOME
     .container
-        .form-inline
-            select.form-control#houseName
-                option Select a House
-                option aviato
-                option berry
-                option forest
-                option roselane
-                option santa-monica
-                option webster
-                option kings
-                option casterly-rock
-            input(type="date", placeholder="Start Date").form-control#startDate
-            input(type="date", placeholder="End Date").form-control#endDate
-            button.btn.btn-primary#rangeCheck Check Date Range
+        .row
+            .col-md-3
+            .col-md-6
+                .row
+                    .form-inline
+                        select.form-control#houseName
+                            option Select a House
+                            option aviato
+                            option berry
+                            option forest
+                            option roselane
+                            option santa-monica
+                            option webster
+                            option kings
+                            option casterly-rock
+                        input(type="date", placeholder="Start Date").form-control#startDate
+                        input(type="date", placeholder="End Date").form-control#endDate
+                br
+                .row
+                    .col-md-3
+                    .col-md-6
+                        button.btn.btn-primary#rangeCheck Check Date Range
+                    .col-md-3
+                br
+                .row
+                    #resultList
+            .col-md-3
     script(src="../scripts/range-check.js")

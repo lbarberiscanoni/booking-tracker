@@ -16,7 +16,7 @@ var isDayFull = function(allCalEvents, todaysDate, limitForDay) {
     } else if (todaysEvents.length == limitForDay) {
         return "FULLY BOOKED";
     } else {
-        return "OVERBOOKED: [ " + (limitForDay = todaysEvents.length) + " ] extra people";
+        return "OVERBOOKED: [ " + (todaysEvents.length - limitForDay) + " ] extra people";
     };
 }
 
@@ -55,7 +55,9 @@ function isRangeAvailable(calEvents, startDate, endDate, maxLimit) {
 }
 
 $("#rangeCheck").click(function() {
+    $("#resultList").empty();
     var startDate = new Date($("#startDate").val());
+    var startDate = new Date(startDate.getTime() - ONE_DAY);
     var endDate = new Date($("#endDate").val());
     var property = $("#houseName").val();
     var bookingsForProperty = window.allBookings.filter(function(booking) { 
@@ -84,18 +86,16 @@ $("#rangeCheck").click(function() {
             break;
     }
 
-    if (startDate && endDate){
+    if (startDate && endDate) {
         var rangeOfDays = isRangeAvailable(bookingsForProperty, startDate, endDate, HARDCODED_MAX_EVENT_LIMIT);
-        for (var i = 0; i < rangeOfDays.length; i++) {
+        var j = 0;
+        for (var i = rangeOfDays.length - 1; i >= 0; i--) {
             var oneDay = 1000 * 3600 * 24;
             var loopDate = new Date(endDate.getTime() - (i - 1) * oneDay);
             var dateAtThisTime = loopDate.toString().split("2015")[0];
-            var dayAtThisTime = dateAtThisTime.split()[1];
-            console.log(startDate);
-            console.log(endDate);
-            console.log(bookingsForProperty);
-            console.log(dateAtThisTime);
-            $(".container").append("<p>" + dateAtThisTime + " is " + rangeOfDays[i] + "</p>");
+            var dayAtThisTime = dateAtThisTime.split(" ")[1];
+            $("#resultList").append("<h4 class='text-center'>" + dateAtThisTime + " is " + rangeOfDays[j] + "</h4>");
+            var j = j + 1;
         }
     } else {
         alert('bad input bro');
