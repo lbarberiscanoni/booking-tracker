@@ -74,7 +74,7 @@ $(document).ready(function() {
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
                             case "webster":
-                                var HARDCODED_MAX_EVENT_LIMIT = 20;
+                                var HARDCODED_MAX_EVENT_LIMIT = 19;
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
                             case "casterly-rock":
