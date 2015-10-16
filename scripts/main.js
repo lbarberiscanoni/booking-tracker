@@ -77,6 +77,9 @@ $(document).ready(function() {
                                 var HARDCODED_MAX_EVENT_LIMIT = 20;
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
+                            case "casterly-rock":
+                                var HARDCODED_MAX_EVENT_LIMIT = 8;
+                                window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                         }
                         
                         alert(eventsOnDay.length + " guests on this day");

@@ -67,26 +67,41 @@ $("#rangeCheck").click(function() {
     var HARDCODED_MAX_EVENT_LIMIT;
     switch (property) {
         case "aviato":
-            HARDCODED_MAX_EVENT_LIMIT = 10;
+            var HARDCODED_MAX_EVENT_LIMIT = 10;
+            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
             break;
         case "berry":
-            HARDCODED_MAX_EVENT_LIMIT = 12;
+            var HARDCODED_MAX_EVENT_LIMIT = 10;
+            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
+            break;
+        case "kings":
+            var HARDCODED_MAX_EVENT_LIMIT = 10;
+            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
             break;
         case "forest":
-            HARDCODED_MAX_EVENT_LIMIT = 12;
+            var HARDCODED_MAX_EVENT_LIMIT = 12;
+            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
             break;
         case "roselane":
-            HARDCODED_MAX_EVENT_LIMIT = 10;
+            var HARDCODED_MAX_EVENT_LIMIT = 10;
+            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
             break;
         case "santa-monica":
-            HARDCODED_MAX_EVENT_LIMIT = 7;
+            var HARDCODED_MAX_EVENT_LIMIT = 7;
+            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
             break;
         case "webster":
-            HARDCODED_MAX_EVENT_LIMIT = 20;
+            var HARDCODED_MAX_EVENT_LIMIT = 20;
+            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
             break;
+        case "casterly-rock":
+            var HARDCODED_MAX_EVENT_LIMIT = 8;
+            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
     }
 
     if (startDate && endDate) {
+        console.log(property);
+        console.log(HARDCODED_MAX_EVENT_LIMIT);
         var rangeOfDays = isRangeAvailable(bookingsForProperty, startDate, endDate, HARDCODED_MAX_EVENT_LIMIT);
         var j = 0;
         for (var i = rangeOfDays.length - 1; i >= 0; i--) {
