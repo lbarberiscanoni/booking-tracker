@@ -66,7 +66,11 @@ $(document).ready(function() {
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
                             case "roselane":
-                                var HARDCODED_MAX_EVENT_LIMIT = 10;
+                                var HARDCODED_MAX_EVENT_LIMIT = 6;
+                                window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
+                                break;
+                            case "roselane-coed":
+                                var HARDCODED_MAX_EVENT_LIMIT = 4;
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
                             case "santa-monica":
