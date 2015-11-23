@@ -25,7 +25,7 @@ $(document).ready(function() {
             var guestStart = guest.start.split("-")[1];
             var formattedDate = new Date(guest.start);
             var formattedDate = formattedDate.toString().split(" ")[1] + " " + formattedDate.toString().split(" ")[2];
-            if (guest.location == houseSelected && guestStart == month && guest.start => todaysDate) {
+            if (guest.location == houseSelected && guestStart == month) {
                 $("#guestFlow").append("<button class='btn btn-default'>" + guest.title + "<br>" + formattedDate + "</button><br><br>");
                 var lol = $("#guestFlow button:last");
                 var nextDay = parseInt(todaysDate.split("-")[2]) + 1;
