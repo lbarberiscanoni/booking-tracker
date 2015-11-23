@@ -1,0 +1,50 @@
+doctype html
+html
+head
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+    script(src='//code.jquery.com/jquery-1.11.3.min.js')
+    script(src='//code.jquery.com/jquery-migrate-1.2.1.min.js')
+    script(src='https://cdn.firebase.com/js/client/2.2.1/firebase.js')
+body
+    h1.text-center Guest Flow Snapshot
+        a(href="../index.html").btn.btn-default HOME
+    .container
+        .row
+            .col-md-4
+            .col-md-4
+                select.form-control#flowDirection
+                    option Select Flow Direction
+                    option Check OUTs
+                    option Check INs
+            .col-md-4
+        .row.col-md-6
+            h2 Aviato
+            #aviato.property
+        .row.col-md-6
+            h2 Berry
+            #berry.property
+        .row.col-md-6
+            h2 Casterly Rock
+            #casterly-rock
+        .row.col-md-6
+            h2 Forest
+            #forest.property
+        .row.col-md-6
+            h2 Kings
+            #kings.property
+        .row.col-md-6
+            h2 Roselane
+            #roselane.property
+        .row.col-md-6
+            h2 Roselane Coed
+            #roselane-coed.property
+        .row.col-md-6
+            h2 Santa Monica
+            #santa-monica.property
+        .row.col-md-6
+            h2 Webster
+            #webster.property
+        .row.col-md-6
+            h2 Webster Girls Room
+            #webster-girls-room.property
+    script(src="../scripts/guestFlow.js")
