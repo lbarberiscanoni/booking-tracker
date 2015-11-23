@@ -23,10 +23,15 @@ $(document).ready(function() {
                 if (arrayOfGuestsToCompareAgainst.length == totalNumberOfGuests) {
                     console.log(arrayOfGuestsToCompareAgainst);
                     if (arrayOfGuestsToCompareAgainst.indexOf(guestID) > 0) {
-                        alert("this guest is already in the system");
-                        var duplicateGuestInfo = "<!DOCTYPE html><head></head><body><h1>" + guestLoopedThrough.title + "</h1><h3>" + guestLoopedThrough.location + "</h3><h3>" + guestLoopedThrough.start + "</h3><h3>" + guestLoopedThrough.end + "</h3><h3>" + guestLoopedThrough.status + "</h3></body>";
-                        var displayPage = window.open();
-                        displayPage.document.write(duplicateGuestInfo);
+                        alert("THIS GUEST IS ALREADY IN THE SYSTEM");
+                        fireData.on("child_added", function(snapshot) {
+                            var guestInfoOfFinalLoop = snapshot.val();
+                            if (guestInfoOfFinalLoop.title == guestID) {
+                                var duplicateGuestInfo = "<!DOCTYPE html><head></head><body><h1>" + guestInfoOfFinalLoop.title + "</h1><h3>" + guestInfoOfFinalLoop.location + "</h3><h3>" + guestInfoOfFinalLoop.start + "</h3><h3>" + guestInfoOfFinalLoop.end + "</h3><h3>" + guestInfoOfFinalLoop.status + "</h3></body>";
+                                var displayPage = window.open();
+                                displayPage.document.write(duplicateGuestInfo);
+                            };
+                        });
                     } else {;
                         fireData.push({
                             start: startDate,

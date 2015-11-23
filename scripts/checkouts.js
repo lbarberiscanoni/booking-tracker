@@ -20,12 +20,12 @@ $(document).ready(function() {
         };
         var todaysDate = year.toString() + "-" + month.toString() + "-" + day.toString();
         console.log(month);
-        allData.orderByChild("start").on("child_added", function(snapshot) {
+        allData.orderByChild("end").on("child_added", function(snapshot) {
             var guest = snapshot.val();
-            var guestStart = guest.start.split("-")[1];
-            var formattedDate = new Date(guest.start);
+            var guestEnd = guest.end.split("-")[1];
+            var formattedDate = new Date(guest.end);
             var formattedDate = formattedDate.toString().split(" ")[1] + " " + formattedDate.toString().split(" ")[2];
-            if (guest.location == houseSelected && guestStart == month && guest.start > todaysDate) {
+            if (guest.location == houseSelected && guestEnd == month && guest.end <= todaysDate) {
                 $("#guestFlow").append("<button class='btn btn-default'>" + guest.title + "<br>" + formattedDate + "</button><br><br>");
                 var lol = $("#guestFlow button:last");
                 var nextDay = parseInt(todaysDate.split("-")[2]) + 1;
@@ -33,6 +33,8 @@ $(document).ready(function() {
                     lol.css("background-color", "#7EB6FF");
                 } else if (parseInt(guest.start.split("-")[2]) == nextDay) {
                     lol.css("background-color", "#FAFAD2");
+                } else {
+                    lol.addClass("disabled");
                 };
             };
         });
