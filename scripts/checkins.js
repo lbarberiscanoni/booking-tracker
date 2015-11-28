@@ -1,42 +1,78 @@
-var allData = new Firebase("https://inncubator-booking.firebaseio.com");
+var listOfReservations = new Firebase("https://inncubator-booking.firebaseio.com");
 
 $(document).ready(function() {
-    $("#houseName").change(function() {
-        $("#guestFlow").empty();
-        var houseSelected = $("#houseName").val();
+    $(".property").empty();
+    
+    //let's get today's date in order to make it the default
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth() + 1;
+    if (month < 10) {
+        var month = "0".concat(month.toString());
+        window.month = month;
+    };
+    var day = today.getDate();
+    if (day < 10) {
+        var day = "0".concat(day.toString());
+        window.day = day;
+    };
+    var todaysDate = year.toString() + "-" + month.toString() + "-" + day.toString();
+    console.log(month);
 
-        //let's get today's date in order to make it the default
-        var today = new Date();
-        var year = today.getFullYear();
-        var month = today.getMonth() + 1;
-        if (month < 10) {
-            var month = "0".concat(month.toString());
-            window.month = month;
-        };
-        var day = today.getDate();
-        if (day < 10) {
-            var day = "0".concat(day.toString());
-            window.day = day;
-        };
-        var todaysDate = year.toString() + "-" + month.toString() + "-" + day.toString();
-        console.log(month);
-        allData.orderByChild("start").on("child_added", function(snapshot) {
-            var guest = snapshot.val();
-            var guestStart = guest.start.split("-")[1];
-            var formattedDate = new Date(guest.start);
-            var formattedDate = formattedDate.toString().split(" ")[1] + " " + formattedDate.toString().split(" ")[2];
-            if (guest.location == houseSelected && guestStart == month) {
-                $("#guestFlow").append("<button class='btn btn-default'>" + guest.title + "<br>" + formattedDate + "</button><br><br>");
-                var lol = $("#guestFlow button:last");
-                var nextDay = parseInt(todaysDate.split("-")[2]) + 1;
-                if (guest.start == todaysDate) {
-                    lol.css("background-color", "#7EB6FF");
-                } else if (parseInt(guest.start.split("-")[2]) == nextDay) {
-                    lol.css("background-color", "#FAFAD2");
-                } else {
-                    lol.addClass("disabled");
-                };
+    //let's figure out 3 days from now
+    var threeDaysFromNow = new Date(todaysDate);
+    threeDaysFromNow.setDate(threeDaysFromNow.getDate() + 3);
+    var dd = threeDaysFromNow.getDate();
+    var mm = threeDaysFromNow.getMonth() + 1;
+    var yy = threeDaysFromNow.getFullYear();
+    if (mm < 10) {
+        var mm = "0".concat(mm.toString());
+        window.mm = mm;
+    };
+    if (dd < 10) {
+        var dd = "0".concat(dd.toString());
+        window.dd = dd;
+    };
+    threeDaysFromNowFormatted = yy.toString() + "-" + mm.toString() + "-" + dd.toString();
+
+    //let's figure out 5 days from now
+    var fiveDaysFromNow = new Date(todaysDate);
+    fiveDaysFromNow.setDate(fiveDaysFromNow.getDate() + 5);
+    var dd = fiveDaysFromNow.getDate();
+    var mm = fiveDaysFromNow.getMonth() + 1;
+    var yy = fiveDaysFromNow.getFullYear();
+    if (mm < 10) {
+        var mm = "0".concat(mm.toString());
+        window.mm = mm;
+    };
+    if (dd < 10) {
+        var dd = "0".concat(dd.toString());
+        window.dd = dd;
+    };
+    fiveDaysFromNowFormatted = yy.toString() + "-" + mm.toString() + "-" + dd.toString();
+
+    //let's populate the interface
+    listOfReservations.orderByChild("start").on("child_added", function(snapshot) {
+        guest = snapshot.val();
+        guestStartDate = new Date(guest.start);
+        todaysDate = new Date(todaysDate);
+        threeDaysFromNowFormatted = new Date(threeDaysFromNowFormatted);
+        fiveDaysFromNowFormatted = new Date(fiveDaysFromNowFormatted);
+
+        if (todaysDate <= guestStartDate) {
+            if (guestStartDate <= threeDaysFromNowFormatted) {
+                $("#" + guest.location).append("<h3 class='btn btn-default' style='background-color: red; color: white;'>" + guest.title + "</h3>");
+                var numOfGuests = $("#" + guest.location).children().length;
+                $("#" + guest.location).parent().find("h2").html("<h2>" + guest.location + " [" + numOfGuests.toString() + "]</h2>");
+                console.log(guest.title);
+            } else if (guestStartDate <= fiveDaysFromNowFormatted) {
+                $("#" + guest.location).append("<h3 class='btn btn-default' style='background-color: green; color: white;'>" + guest.title + "</h3>");
+                var numOfGuests = $("#" + guest.location).children().length;
+                $("#" + guest.location).parent().find("h2").html("<h2>" + guest.location + " [" + numOfGuests.toString() + "]</h2>");
+                console.log(guest.title);
             };
-        });
+        } else {
+            console.log("not in the date range");
+        };
     });
 });
