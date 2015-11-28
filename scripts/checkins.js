@@ -59,6 +59,12 @@ $(document).ready(function() {
         threeDaysFromNowFormatted = new Date(threeDaysFromNowFormatted);
         fiveDaysFromNowFormatted = new Date(fiveDaysFromNowFormatted);
 
+        //notify of checkins today
+        if (todaysDate == guestStartDate) {
+            alert(guest.title + " is checking IN today!");
+        };
+
+        //color code guest names based on when they are checkin in
         if (todaysDate <= guestStartDate) {
             if (guestStartDate <= threeDaysFromNowFormatted) {
                 $("#" + guest.location).append("<h3 class='btn btn-default' style='background-color: red; color: white;'>" + guest.title + "</h3>");

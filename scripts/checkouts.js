@@ -59,6 +59,10 @@ $(document).ready(function() {
         threeDaysFromNowFormatted = new Date(threeDaysFromNowFormatted);
         fiveDaysFromNowFormatted = new Date(fiveDaysFromNowFormatted);
 
+        //alert of guests checking out today
+        if (todaysDate == guestEndDate) {
+            alert(guest.title + " is checking OUT today!");
+        };
         if (todaysDate <= guestEndDate) {
             if (guestEndDate <= threeDaysFromNowFormatted) {
                 $("#" + guest.location).append("<h3 class='btn btn-default' style='background-color: red; color: white;'>" + guest.title + "</h3>");
