@@ -49,8 +49,8 @@ $(document).ready(function() {
                     if (loopCount == allEvents.length) {
                         var property = $("#houseName").val();
                         switch (property) {
-                            case "aviato":
-                                var HARDCODED_MAX_EVENT_LIMIT = 10;
+                            case "new-york":
+                                var HARDCODED_MAX_EVENT_LIMIT = 1;
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
                             case "berry":
@@ -74,7 +74,7 @@ $(document).ready(function() {
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
                             case "santa-monica":
-                                var HARDCODED_MAX_EVENT_LIMIT = 7;
+                                var HARDCODED_MAX_EVENT_LIMIT = 1;
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
                             case "webster":

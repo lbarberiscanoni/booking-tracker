@@ -66,8 +66,8 @@ $("#rangeCheck").click(function() {
 
     var HARDCODED_MAX_EVENT_LIMIT;
     switch (property) {
-        case "aviato":
-            var HARDCODED_MAX_EVENT_LIMIT = 10;
+        case "new-york":
+            var HARDCODED_MAX_EVENT_LIMIT = 1;
             window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
             break;
         case "berry":
@@ -91,7 +91,7 @@ $("#rangeCheck").click(function() {
             window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
             break;
         case "santa-monica":
-            var HARDCODED_MAX_EVENT_LIMIT = 7;
+            var HARDCODED_MAX_EVENT_LIMIT = 1;
             window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
             break;
         case "webster":
