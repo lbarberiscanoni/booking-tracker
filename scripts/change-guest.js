@@ -10,6 +10,7 @@ $(document).ready(function() {
             var currentStart = $("#start").text();
             var currentEnd = $("#end").text();
             var currentStatus = $("#status").text();
+            var currentEmail = $("#email").text();
 
             //next let's make all the parameters editable
             //let's start with the property list
@@ -30,17 +31,23 @@ $(document).ready(function() {
             var indexOfCurrentStatus = statusOptions.indexOf(currentStatus);
             statusOptions.splice(indexOfCurrentStatus, 1);
             $("#status").html("<select id='status'><option>" + currentStatus +"</option><option>" + statusOptions[0] + "</option>");
+
+            //let's do email
+            $("#email").html("<input type='text' id='email'></input>");
         } else if (editView == "Confirm Changes") {
             var guestID = $("#guestID").text();
             var newLocation = $("select#location").val();
             var newStart = $("input#start").val();
             var newEnd = $("input#end").val();
             var newStatus = $("select#status").val();
+            var newEmail = $("input#email").val();
+
             fireData.child(guestID).update({
                 start: newStart,
                 end: newEnd,
                 status: newStatus,
                 location: newLocation,
+                email: newEmail,
             });
             alert("success");
             window.location.reload();

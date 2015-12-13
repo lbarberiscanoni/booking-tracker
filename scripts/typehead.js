@@ -19,7 +19,7 @@ var getInfo = function(a) {
         personName = person.title.replace(" ", "").toLowerCase();
 
         if (personName == guestSearched) {
-            $("#message").html("<h2 class='text-center'>" + guestSearched + "</h2><div class='col-md-4'></div><div class='col-md-4'><table class='table table-bordered'><tr><td>Location</td><td class='amendable' id='location'>" + person.location + "</td><tr><td>Start</td><td class='amendable' id='start'>" + person.start + "</td></tr><tr><td>End</td><td class='amendable' id='end'>" + person.end + "</td></tr><tr><td>Status</td><td class='amendable' id='status'>" + person.status + "</td></tr><tr><td>ID</td><td id='guestID'>" + personID + "</td></tr></table></div><div class='col-md-4'></div>");
+            $("#message").html("<h2 class='text-center'>" + guestSearched + "</h2><div class='col-md-4'></div><div class='col-md-4'><table class='table table-bordered'><tr><td>Location</td><td class='amendable' id='location'>" + person.location + "</td><tr><td>Start</td><td class='amendable' id='start'>" + person.start + "</td></tr><tr><td>End</td><td class='amendable' id='end'>" + person.end + "</td></tr><tr><td>Status</td><td class='amendable' id='status'>" + person.status + "</td></tr><tr><td>Email</td><td id='email'>" + person.email + "</td></tr><tr><td>ID</td><td id='guestID'>" + personID + "</td></tr></table></div><div class='col-md-4'></div>");
         };
     });
 };
