@@ -33,7 +33,7 @@ $(document).ready(function() {
             $("#status").html("<select id='status'><option>" + currentStatus +"</option><option>" + statusOptions[0] + "</option>");
 
             //let's do email
-            $("#email").html("<input type='text' id='email'></input>");
+            $("#email").html("<input type='text' id='email' value='" + currentEmail + "'></input>");
         } else if (editView == "Confirm Changes") {
             var guestID = $("#guestID").text();
             var newLocation = $("select#location").val();
