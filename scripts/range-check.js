@@ -95,7 +95,7 @@ $("#rangeCheck").click(function() {
             window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
             break;
         case "webster":
-            var HARDCODED_MAX_EVENT_LIMIT = 15;
+            var HARDCODED_MAX_EVENT_LIMIT = 16;
             window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
             break;
         case "webster-girls-room":

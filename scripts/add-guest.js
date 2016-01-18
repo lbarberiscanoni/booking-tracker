@@ -19,6 +19,7 @@ $(document).ready(function() {
             fireData.on("child_added", function(snapshot) {
                 guestLoopedThrough = snapshot.val();
                 guestLoopedThroughName = guestLoopedThrough.title;
+                console.log(guestLoopedThroughName);
                 arrayOfGuestsToCompareAgainst.push(guestLoopedThroughName.toLowerCase());
                 if (arrayOfGuestsToCompareAgainst.length == totalNumberOfGuests) {
                     console.log(arrayOfGuestsToCompareAgainst);
