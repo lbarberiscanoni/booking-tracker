@@ -88,6 +88,9 @@ $(document).ready(function() {
                             case "casterly-rock":
                                 var HARDCODED_MAX_EVENT_LIMIT = 8;
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
+                            case "stanford-inn":
+                                var HARDCODED_MAX_EVENT_LIMIT = 12;
+                                window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                         }
                         
                         alert(eventsOnDay.length + " guests on this day");
