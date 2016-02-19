@@ -1,0 +1,27 @@
+doctype html
+html
+head
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+    script(src='//code.jquery.com/jquery-1.11.3.min.js')
+    script(src='//code.jquery.com/jquery-migrate-1.2.1.min.js')
+    script(src='https://cdn.firebase.com/js/client/2.2.1/firebase.js')
+body
+    h1.text-center Check Ins and Check Outs
+        a(href="../index.html").btn.btn-default HOME
+    .container
+        .row
+            .col-md-6
+                .row
+                    h2.text-center Check Ins
+                .row
+                    .col-md-5
+                    .col-md-2#checkIns
+                    .col-md-5
+            .col-md-6
+                .row
+                    h2.text-center Check Outs
+                .row
+                    .col-md-5
+                    .col-md-2#checkOuts
+                    .col-md-5
+    script(src="../scripts/checkFlow.js")
