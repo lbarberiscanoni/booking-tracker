@@ -62,7 +62,7 @@ $(document).ready(function() {
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
                             case "forest":
-                                var HARDCODED_MAX_EVENT_LIMIT = 12;
+                                var HARDCODED_MAX_EVENT_LIMIT = 14;
                                 window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
                                 break;
                             case "roselane":
