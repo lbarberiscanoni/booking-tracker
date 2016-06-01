@@ -66,10 +66,6 @@ $("#rangeCheck").click(function() {
 
     var HARDCODED_MAX_EVENT_LIMIT;
     switch (property) {
-        case "new-york":
-            var HARDCODED_MAX_EVENT_LIMIT = 1;
-            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
-            break;
         case "berry":
             var HARDCODED_MAX_EVENT_LIMIT = 10;
             window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
@@ -82,18 +78,6 @@ $("#rangeCheck").click(function() {
             var HARDCODED_MAX_EVENT_LIMIT = 14;
             window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
             break;
-        case "roselane":
-            var HARDCODED_MAX_EVENT_LIMIT = 6;
-            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
-            break;
-        case "roselane-coed":
-            var HARDCODED_MAX_EVENT_LIMIT = 4;
-            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
-            break;
-        case "santa-monica":
-            var HARDCODED_MAX_EVENT_LIMIT = 1;
-            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
-            break;
         case "webster":
             var HARDCODED_MAX_EVENT_LIMIT = 16;
             window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
@@ -103,9 +87,6 @@ $("#rangeCheck").click(function() {
             window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
         case "casterly-rock":
             var HARDCODED_MAX_EVENT_LIMIT = 8;
-            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
-        case "stanford-inn":
-            var HARDCODED_MAX_EVENT_LIMIT = 12;
             window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
     }
 
