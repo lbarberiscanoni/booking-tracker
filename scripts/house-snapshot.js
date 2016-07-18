@@ -22,7 +22,7 @@ $(document).ready(function() {
         var guestInfo = snapshot.val();
         var houseName = guestInfo.location;
         if (guestInfo.end > todaysDate && guestInfo.start <= todaysDate) {
-            $("#" + houseName).append("<h3 class='btn btn-default'>Name: " + guestInfo.title + "<br>Start: " + guestInfo.start + "<br>End: " + guestInfo.end + "<br>Status: " + guestInfo.status + "<br>Email: " + guestInfo.email + "</h3>");
+            $("#" + houseName).append("<h3 class='btn btn-default' id='" + snapshot.key() + "'>Name: " + guestInfo.title + "<br>Start: " + guestInfo.start + "<br>End: " + guestInfo.end + "<br>Status: " + guestInfo.status + "<br>Email: " + guestInfo.email + "</h3>");
             var numOfGuests = $("#" + houseName).children().length - 1;
             $("#" + houseName + " h2").html(houseName + " [" + numOfGuests.toString() + "]");
         } else {

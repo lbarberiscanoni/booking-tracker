@@ -14,7 +14,7 @@ $(document).ready(function() {
 
             //next let's make all the parameters editable
             //let's start with the property list
-            var listOfProperties = ["berry", "casterly-rock", "forest", "kings", "webster", "webster-girls-room", "left-early"];
+            var listOfProperties = ["berry", "casterly-rock", "forest", "kings", "webster", "webster-girls-room", "webster-private", "left-early"];
             var indexOfDefaultProperty = listOfProperties.indexOf(currentLocation);
             listOfProperties.splice(indexOfDefaultProperty, 1); 
             $("#location").html("<select id='location'><option>" + currentLocation + "</option></select>");

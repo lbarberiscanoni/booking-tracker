@@ -85,6 +85,9 @@ $("#rangeCheck").click(function() {
         case "webster-girls-room":
             var HARDCODED_MAX_EVENT_LIMIT = 4;
             window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
+        case "webster-girls-room":
+            var HARDCODED_MAX_EVENT_LIMIT = 1;
+            window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
         case "casterly-rock":
             var HARDCODED_MAX_EVENT_LIMIT = 8;
             window.HARDCODED_MAX_EVENT_LIMIT = HARDCODED_MAX_EVENT_LIMIT;
